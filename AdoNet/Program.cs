@@ -1,4 +1,5 @@
-﻿using AdoNet.Manager;
+﻿using AdoNet;
+using AdoNet.Manager;
 using System;
 using System.Data.SqlClient;
 
@@ -8,6 +9,18 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
+            OrderManager orderManager = new OrderManager();
+
+
+            var orders = orderManager.GetOrders();
+            var orders1 = orderManager.GetOrders("select * from Orders where ShipCountry = 'Germany'");
+
+            Console.WriteLine(orders1);
+
+
+
+
+
             ProductManager productManager = new ProductManager();
             //1) Dışarıdan decimal minimum ve maximum price alan ve onlara uygun ürünleri bana dönen metot.
             Console.WriteLine("max değer ?");
